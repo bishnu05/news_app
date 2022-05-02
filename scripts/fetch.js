@@ -17,10 +17,10 @@ let countryNews = async (country_code) =>{
  export {countryNews}
 
  let searchData = async ()=>{
-    let query = localStorage.getItem("search");
-    console.log(query)
+    let search = localStorage.getItem("search");
+    console.log(search)
     try{
-        const url = `https://masai-mock-api.herokuapp.com/news?q=${query}`
+        const url = `https://masai-mock-api.herokuapp.com/news?q=${search}`
         let res = await fetch(url)
         let data = await res.json()
         //console.log(data)
@@ -33,5 +33,4 @@ let countryNews = async (country_code) =>{
     } 
 }
 searchData()
-
 export {searchData};

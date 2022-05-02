@@ -1,12 +1,13 @@
 // Ude Import export (MANDATORY)
 // Onclicking store the news in local storage with key "news" so that you can access that on news.html page
+
 import {navbar} from "../components/navbar.js"
 document.getElementById("navbar").innerHTML = navbar();
 
-let x = searchData()
-    x.then((res)=>{
+let a = searchData()
+    a.then((res)=>{
         appendData(res)
-        //console.log(res)
+       
     })
 import {searchData} from "./fetch.js";
 let results = document.getElementById("results");
@@ -15,12 +16,12 @@ let results = document.getElementById("results");
     
     results.innerHTML = null;
    data.articles.forEach((el) => {
-       //console.log(el)
       
-    let news_div = document.createElement("div");
+      
+    let news = document.createElement("div");
     news_div.setAttribute("class","news");
     news_div.addEventListener("click",function(){
-        newsstor(el)
+        newsstorage(el)
     })
 
     let image = document.createElement("img");
@@ -32,15 +33,13 @@ let results = document.getElementById("results");
     let descr = document.createElement("p");
     descr.innerText = el.description;
 
-    news_div.append(image,title,descr)
-    results.append(news_div)
+    news.append(image,title,descr)
+    results.append(news)
 
    });   
  }
 
- function newsstor(el){
+ function newsstorage(el){
      localStorage.setItem("news",JSON.stringify(el));
      window.location.href = "news.html"
  }
-// Onclicking store the news in local storage with key "news" so that you can access that on news.html page
-

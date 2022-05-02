@@ -4,9 +4,9 @@
 }
 #search_input{
     margin-top: 15px;
-    margin-left: 150px;
-    border-radius: 10px;
+    border-radius: 8px;
     height: 50px;
     width: 1000px;
+    margin-left: 145px;
 }
 

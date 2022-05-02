@@ -4,12 +4,13 @@
 }
 #sidebar{
     height: 400px;
+    padding: 18px;
     width: 10%;
     margin-top: 25px;
-    padding: 15px;
+   
 }
 #sidebar>h3{
-    background-color: rgb(99, 5, 186);
+    background-color: rgba(25, 8, 212, 0.773);
     color: white;
     cursor: pointer;
 }
@@ -27,4 +28,8 @@
     height: 100%;
     width: 30%;
 }
-
+#sidebar>h3{
+    text-align: center;
+    height:35px;
+    padding-top:10px
+}
