@@ -1,38 +1,74 @@
 // Ude Import export (MANDATORY)
-// Onclicking store the news in local storage with key "news" so that you can access that on news.html page
+import {navbar} from "../components/navbar.js"
+document.getElementById("navbar").innerHTML = navbar();
 
-import { navbar } from "../components/navbar.js";
-let n=document.getElementById("navbar")
-n.innerHTML=navbar();
-
-import {searchImages,append} from "./fetch.js"
-let search=(e)=>{
-    if(e.key==="Enter"){
-        let value=document.getElementById("search_input").value;
-        searchImages(value).then((data)=>{
-           
-         console.log(data);
-         let container=document.getElementById("sidebar")
-         container.innerHTML=null;
-         append(data.results,container)
-        })
-    }
-};
-
-document.getElementById("query").addEventListener("keydown",search);
-
-let category=document.getElementById("sidebar").children;
-
-function cSearch(){
-    console.log(this.id)
-    searchImages(this.id).then((data)=>{
-        console.log(data);
-        let container=document.getElementById("sidebar");
-        container.innerHTML=null;
-        append(data.results,container)
+let country = document.getElementById("sidebar").children;
+function searchCountry(){
+   // console.log(this.id)
+    let country_code = "in";
+    country_code = this.id;
+    let a = countryNews(country_code)
+    a.then((res)=>{
+        appendData(res)
+        //console.log(res)
     })
 }
+for(let el of country){
+        el.addEventListener('click',searchCountry)
+   }
 
-for(el of category){
-    el.addEventListener("click",cSearch)
+   defData()
+function defData(){
+    let country_code = "in";
+    let a = countryNews(country_code)
+    a.then((res)=>{
+        appendData(res)
+        //console.log(res)
+    })
 }
+import {countryNews} from "./fetch.js"
+
+let results = document.getElementById("results");
+ function appendData(data){
+     //console.log(data)
+    
+    results.innerHTML = null;
+   data.articles.forEach((el) => {
+       //console.log(el)
+      
+    let news_div = document.createElement("div");
+    news_div.setAttribute("class","news");
+    news_div.addEventListener("click",function(){
+        newsletter(el)
+    })
+
+    let image = document.createElement("img");
+    image.src = el.urlToImage;
+
+    let title = document.createElement("h3");
+    title.innerText = el.title;
+
+    let descr = document.createElement("p");
+    descr.innerText = el.description;
+
+    news_div.append(image,title,descr)
+    results.append(news_div)
+
+   });   
+ }
+ function newsletter(el){
+    localStorage.setItem("news",JSON.stringify(el));
+    window.location.href = "news.html"
+}
+
+let search = (e)=>{
+    if(e.key==="Enter"){
+        let search = document.getElementById("search_input").value;
+        console.log(search)
+        localStorage.setItem("search",search)
+        window.location.href = "search.html"
+    }
+}
+document.getElementById("search_input").addEventListener("keydown",search);
+ 
+// Onclicking store the news in local storage with key "news" so that you can access that on news.html page

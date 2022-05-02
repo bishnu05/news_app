@@ -1,0 +1,12 @@
+#navbar{
+    display: flex;
+    padding-left: 22px;
+}
+#search_input{
+    margin-top: 15px;
+    margin-left: 150px;
+    border-radius: 10px;
+    height: 50px;
+    width: 1000px;
+}
+

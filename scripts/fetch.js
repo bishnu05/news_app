@@ -1,26 +1,37 @@
-let searchImages=async(value)=>{
+let countryNews = async (country_code) =>{
+    console.log(country_code)
     try{
-        let res=await fetch(`https://masai-mock-api.herokuapp.com/news?q=${value}`)
-        let data=await res.json();
-        console.log(data);
+        const url = `https://masai-mock-api.herokuapp.com/news/top-headlines?country=${country_code}`
+        let res = await fetch(url)
+        let data = await res.json()
+        //console.log(data)
         return data;
+        // appendData(data,results)
     }
     catch(err){
         console.log(err)
+
     }
 }
 
-let append=(data,container)=>{
-     data.forEach=()=>{
-           let div=document.createElement("div")
-           div.setAttribute("class","news")
-           let img=createElement("img");
-           img.src=img ;
-           let title=document.createElement("h3")
-           title.innerHTML=title;
-           let description = document.createElement("h3")
-           description.innerHTML=description;
-           div.append(img,title,description)
-           container.append(div)
-     }
+ export {countryNews}
+
+ let searchData = async ()=>{
+    let query = localStorage.getItem("search");
+    console.log(query)
+    try{
+        const url = `https://masai-mock-api.herokuapp.com/news?q=${query}`
+        let res = await fetch(url)
+        let data = await res.json()
+        //console.log(data)
+        return data;
+        // appendData(data,results)
+    }
+    catch(err){
+        console.log(err)
+
+    } 
 }
+searchData()
+
+export {searchData};
