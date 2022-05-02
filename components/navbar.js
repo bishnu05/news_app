@@ -6,3 +6,4 @@ let navbar = () =>{
    </div>`;
 }
 export {navbar}
+
