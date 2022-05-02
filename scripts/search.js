@@ -19,8 +19,8 @@ let results = document.getElementById("results");
       
       
     let news = document.createElement("div");
-    news_div.setAttribute("class","news");
-    news_div.addEventListener("click",function(){
+    news.setAttribute("class","news");
+    news.addEventListener("click",function(){
         newsstorage(el)
     })
 

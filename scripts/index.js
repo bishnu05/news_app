@@ -21,7 +21,7 @@ for(let el of country){
    dData()
 function dData(){
     let country_code = "in";
-    let x = countryNews(country_code)
+    let a = countryNews(country_code)
     a.then((res)=>{
         appendData(res)
         
@@ -50,7 +50,7 @@ let results = document.getElementById("results");
     title.innerText = el.title;
 
     let description = document.createElement("p");
-    descr.innerText = el.description;
+    description.innerText = el.description;
 
     news_div.append(image,title,description)
     results.append(news_div)
